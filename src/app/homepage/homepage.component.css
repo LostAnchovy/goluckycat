@@ -1,0 +1,13 @@
+#headerImage{
+    width: 100%;
+    opacity: .6;
+}
+
+img{
+    width: 200px;
+}
+
+.fas{
+    color: #B8E986; 
+    margin-bottom: 40px
+}

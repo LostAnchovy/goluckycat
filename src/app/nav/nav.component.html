@@ -1,0 +1,23 @@
+<header>
+    <nav class="navbar navbar-expand-sm bg-light fixed-top navbar-light mb-3">
+        <img src ="../../assets/images/logo.png">
+          <button class="navbar-toggler m-auto" type="button" data-toggle="collapse" data-target="#navBody" aria-controls="basicExampleNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navBody">
+    
+      <ul class="nav navbar-nav navbar-right ml-auto">  
+         <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
+             <a class="nav-link" [routerLink]="['login']"><button class="btn btn-outline-primary">login</button></a>
+         </li> 
+         <li class="nav-item text-center" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" [routerLink]="['registration']"><button class="btn btn-outline-success">Become a Provider</button></a>
+       </li> 
+          <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="_auth.loggedIn()">
+            <a class="nav-link" (click)="logOut()">Log Out</a>
+         </li> 
+      </ul>
+      </div>
+    </nav>
+</header>
