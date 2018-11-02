@@ -1,11 +1,16 @@
 <header>
     <nav class="navbar navbar-expand-sm bg-light fixed-top navbar-light mb-3">
         <img src ="../../assets/images/logo.png">
-          <button class="navbar-toggler m-auto" type="button" data-toggle="collapse" data-target="#navBody" aria-controls="basicExampleNav"
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBody" aria-controls="basicExampleNav"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
       <div class="collapse navbar-collapse" id="navBody">
+        <ul class="nav navbar-nav navbar-left p-4">  
+            <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link" [routerLink]="['/']">Home</a>
+            </li> 
+        </ul>   
     
       <ul class="nav navbar-nav navbar-right ml-auto">  
          <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
