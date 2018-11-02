@@ -1,6 +1,6 @@
 .container{
     padding: 50px;
-    background-color:whitesmoke;
+    background-color:#A3C7F1;
     width: 70%;
     border-radius: 10px;
     margin-top: 50px;
@@ -11,5 +11,4 @@
 button{
     background-color: #B8E986; 
     height: 70px;
-    opacity: .4;
 }
