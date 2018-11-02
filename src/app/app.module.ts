@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     SignupComponent,
     NotfoundComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

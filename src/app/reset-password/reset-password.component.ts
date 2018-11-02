@@ -2,39 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router'
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  submitted = false;
-  user ={
-     email: '',
-     password: '',
-  }
-  message = '';
-
-  constructor(private _http:HttpClient, private _router: Router, private formBuilder: FormBuilder) { }
+export class ResetPasswordComponent implements OnInit {
+resetForm: FormGroup;
+submitted = false;
+user ={
+  email: ''
+}
+message = '';
+  constructor( private _router: Router, private _http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.resetForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
   });
   }
+  get f() { return this.resetForm.controls; }
 
-  get f() { return this.loginForm.controls; }
-
-  logIn(){
+  reset(){
     this.submitted = true
 
-    if (this.loginForm.invalid) {
+    if (this.resetForm.invalid) {
       return;
-    } 
+    }
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
