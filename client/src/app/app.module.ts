@@ -12,6 +12,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ListingsComponent } from './listings/listings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     SignupComponent,
     NotfoundComponent,
     RegistrationComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ListingsComponent
   ],
   imports: [
     BrowserModule,

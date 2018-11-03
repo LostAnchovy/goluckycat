@@ -10,11 +10,14 @@
             <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
                 <a class="nav-link" [routerLink]="['/']">Home</a>
             </li> 
+            <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link" [routerLink]="['/listings']">Listings</a>
+                </li> 
         </ul>   
     
       <ul class="nav navbar-nav navbar-right ml-auto">  
          <li class="nav-item text-center " data-toggle="collapse" data-target=".navbar-collapse.show">
-             <a class="nav-link" [routerLink]="['login']"><button class="btn btn-outline-primary">login</button></a>
+             <a class="nav-link" [routerLink]="['login']"><button class="btn btn-outline-primary">Post a job</button></a>
          </li> 
          <li class="nav-item text-center" data-toggle="collapse" data-target=".navbar-collapse.show">
             <a class="nav-link" [routerLink]="['provider-registration']"><button class="btn btn-outline-success">Become a Provider</button></a>

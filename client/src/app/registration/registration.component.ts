@@ -29,6 +29,7 @@ export class RegistrationComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone:['',Validators.required],
+      terms:[Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
   });
   }
@@ -40,6 +41,7 @@ export class RegistrationComponent implements OnInit {
     if (this.providerForm.invalid) {
       return;
     } 
+    console.log('form has been submmited')
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

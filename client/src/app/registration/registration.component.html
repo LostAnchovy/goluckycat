@@ -53,9 +53,12 @@
       </div>
     </div>
     <div class="form-group">
-        <button class="btn-block" type ="submit" value ="ok">Register</button>
+      <input type="checkbox" formControlName="terms" required><span> I have read and agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
     </div>
-    <!-- <button class="btn btn-primary" type = "submit" [disabled]="loginForm.invalid"  value ="ok">Submit</button> -->
+    <div class="form-group">
+        <button class="btn-block" type ="submit" [disabled]="providerForm.invalid" value ="ok">Register</button>
+    </div>
+    <!-- <button class="btn btn-primary" type = "submit" [disabled]="providerForm.invalid"  value ="ok">Submit</button> -->
   </form>
 </div>
 
