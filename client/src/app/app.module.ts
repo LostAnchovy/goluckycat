@@ -13,6 +13,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ListingsComponent } from './listings/listings.component';
+import { MaterialModule} from './material'
+import { NgxPaginationModule} from 'ngx-pagination';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TaskslistComponent } from './taskslist/taskslist.component'
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,9 @@ import { ListingsComponent } from './listings/listings.component';
     NotfoundComponent,
     RegistrationComponent,
     ResetPasswordComponent,
-    ListingsComponent
+    ListingsComponent,
+    DashboardComponent,
+    TaskslistComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +40,10 @@ import { ListingsComponent } from './listings/listings.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaterialModule,
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

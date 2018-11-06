@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import {Observable} from "rxjs"
+
+
 
 @Component({
   selector: 'app-listings',
   templateUrl: './listings.component.html',
   styleUrls: ['./listings.component.css']
 })
-export class ListingsComponent implements OnInit {
 
-  constructor() { }
+
+export class ListingsComponent implements OnInit {
+  p: number = 1;
+  tasks: any = []
+
+  constructor(private _http: HttpClient) { }
+  
+  // @Output('cdkDropDropped') 
+  // dropped: EventEmitter<CdkDragDrop< any>> = 
+  // new EventEmitter<CdkDragDrop< any>>();  
 
   ngOnInit() {
+    this._http.get('/api/tasks/all').subscribe(res=>{
+      this.tasks = res 
+      console.log(res)
+    })
   }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+  }
+
+  
 
 }

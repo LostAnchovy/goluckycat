@@ -8,10 +8,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResetPasswordComponent} from './reset-password/reset-password.component'
 import { ListingsComponent } from './listings/listings.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'provider-registration', component: RegistrationComponent },
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },

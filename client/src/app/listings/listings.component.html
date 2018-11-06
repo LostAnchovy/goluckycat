@@ -9,86 +9,33 @@
 
 <!-- Start of Listings  -->
 <section>
-  <div class="row m-2">
-      <div class="col-md-6 mb-3">
-        <div class="card bg-light">
+  <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
+      <div class="col-md-12 mb-3" *ngFor="let task of tasks | paginate: { itemsPerPage: 3, currentPage: p}">
+        <div class="card bg-light" cdkDrag>
           <div class="card-header">あなたの日本語を必要としている人がいま</div>
             <div class="card-body">
               <div class="card-text p-2">
                 <h2>Task Title</h2>
-                <p>あなたの日本語を必要としている人がいます！</p>
+                <p>{{task.title}}</p>
                 <h2>Task Location</h2>
-                <p>777 Brown Drive, San Jose CA 95134</p>
+                <p>{{task.location}}</p>
                 <h2>Description</h2>
-                <p>あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！あなたの日本語を必要としている人がいます！</p>
+                <p>{{task.description}}</p>
                 <div class="d-inline p-2">
-                  <span class="font-weight-bold">cost $50</span>
-                  <button class="float-right btn btn-outline-success">Interested</button>
+                  <span class="font-weight-bold">cost ${{task.cost}}</span>
+                  <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
+                  <button mat-raised-button color="primary" class="float-right">Interested</button>
                 </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 mb-3">
-          <div class="card bg-light">
-            <div class="card-header"> Header</div>
-              <div class="card-body">
-                <div class="card-text p-2">
-                  <h2>Task Title</h2>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora sapiente</p>
-                  <h2>Task Location</h2>
-                  <p>777 Brown Drive, San Jose CA 95134</p>
-                  <h2>Description</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, aliquid vero? Est a dolores culpa. Explicabo id quis deleniti error eaque, voluptatibus, exercitationem illum neque perspiciatis accusantium cumque veniam sequi.</p>
-                  <div class="d-inline p-2">
-                    <span class="font-weight-bold">cost $50</span>
-                    <button class="float-right btn btn-outline-success">Interested</button>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card bg-light">
-              <div class="card-header"> Header</div>
-                <div class="card-body">
-                  <div class="card-text p-2">
-                    <h2>Task Title</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora sapiente</p>
-                    <h2>Task Location</h2>
-                    <p>777 Brown Drive, San Jose CA 95134</p>
-                    <h2>Description</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, aliquid vero? Est a dolores culpa. Explicabo id quis deleniti error eaque, voluptatibus, exercitationem illum neque perspiciatis accusantium cumque veniam sequi.</p>
-                    <div class="d-inline p-2">
-                      <span class="font-weight-bold">cost $50</span>
-                      <button class="float-right btn btn-outline-success">Interested</button>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-              <div class="card bg-light">
-                <div class="card-header"> Header</div>
-                  <div class="card-body">
-                    <div class="card-text p-2">
-                      <h2>Task Title</h2>
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora sapiente</p>
-                      <h2>Task Location</h2>
-                      <p>777 Brown Drive, San Jose CA 95134</p>
-                      <h2>Description</h2>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, aliquid vero? Est a dolores culpa. Explicabo id quis deleniti error eaque, voluptatibus, exercitationem illum neque perspiciatis accusantium cumque veniam sequi.</p>
-                      <div class="d-inline p-2">
-                        <span class="font-weight-bold">cost $50</span>
-                        <button class="float-right btn btn-outline-success">Interested</button>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
   </div>
+  <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 </section>
-<h2 class="text-center">  1 | 2 | 3 | 4 | 5 |</h2>
+<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+</div> -->
 <app-footer></app-footer>
 </div>
 <!-- End of Listings -->
