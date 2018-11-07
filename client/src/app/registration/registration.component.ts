@@ -10,35 +10,37 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  providerForm: FormGroup;
+  userForm: FormGroup;
   submitted = false;
-  provider ={
+  user ={
     first_name: '',
     last_name: '',
     email: '',
     username: '',
     password: '',
+    category: '',
   };
   message = '';
 
   constructor(private _http:HttpClient, private _router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.providerForm = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone:['',Validators.required],
-      terms:[Validators.required],
+      category:['',Validators.required],
+      terms:['',Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
   });
   }
-  get f() { return this.providerForm.controls; }
+  get f() { return this.userForm.controls; }
 
-  newProvider(){
+  newUser(){
     this.submitted = true
 
-    if (this.providerForm.invalid) {
+    if (this.userForm.invalid) {
       return;
     } 
     console.log('form has been submmited')

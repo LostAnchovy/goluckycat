@@ -30,3 +30,14 @@ exports.delete = (req, res)=>{
         res.status(501).send({ success: false, msg:'can not remove tasks from DB'})
     })
 }
+
+
+exports.update = (req, res) => {
+    var id = {_id: req.params.taskId}
+	Tasks.findByIdAndUpdate(id,req.body,{new:true}) 
+	.then((updatedTasks) => {
+		res.json(updatedTasks)
+	}).catch((err)=>{
+        res.status(501).send({ success: false, msg:'error updating product'})
+    })
+};

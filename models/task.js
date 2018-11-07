@@ -1,4 +1,6 @@
 var mongoose = require('mongoose')
+var User = require ('../models/user')
+var Schema = mongoose.Schema
 const tasksSchema = mongoose.Schema({
     title:{
         type: String,
@@ -12,7 +14,7 @@ const tasksSchema = mongoose.Schema({
     cost:{
         type: Number,
     },
-    // tasks: [{ type: Schema.Types.ObjectId, ref: 'Tasks' }]
+    User: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },{timestamps: true });
 
 var Tasks = mongoose.model('Tasks', tasksSchema)

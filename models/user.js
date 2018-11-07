@@ -11,12 +11,16 @@ const userSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    user_name:{
-        type: String,
-        unique: true 
-    },
     password:{
         type: String,        
+    },
+    phone:{
+        type: Number,        
+    },
+    category:{
+        type: String,
+        enum:['user', 'provider'],
+        require: true 
     },
     isAdmin:{
         type:Boolean,

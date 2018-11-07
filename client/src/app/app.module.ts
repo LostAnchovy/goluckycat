@@ -18,6 +18,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskslistComponent } from './taskslist/taskslist.component'
 import { DataService } from './data.service';
+import { UserslistComponent } from './userslist/userslist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DataService } from './data.service';
     ResetPasswordComponent,
     ListingsComponent,
     DashboardComponent,
-    TaskslistComponent
+    TaskslistComponent,
+    UserslistComponent
   ],
   imports: [
     BrowserModule,

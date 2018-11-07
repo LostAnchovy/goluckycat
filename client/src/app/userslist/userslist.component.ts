@@ -6,21 +6,22 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import { DataService } from '../data.service';
 
 export interface UserInterface {
-    title: String, 
-    location: string;
+    _id: string;
     cost: number;
-    created: String
+    location: string;
+    phone: string,
     Admin: string,
   }
 
-@Component({
-  selector: 'app-taskslist',
-  templateUrl: './taskslist.component.html',
-  styleUrls: ['./taskslist.component.css']
-})
-export class TaskslistComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'location','cost', 'created', 'Admin'];
+@Component({
+  selector: 'app-userslist',
+  templateUrl: './userslist.component.html',
+  styleUrls: ['./userslist.component.css']
+})
+export class UserslistComponent implements OnInit {
+
+  displayedColumns: string[] = ['_id', 'location','phone', 'cost', 'Admin'];
   dataSource: any 
  
 
@@ -34,23 +35,22 @@ export class TaskslistComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  removeTask(id){
-    this._dataService.removeTask(id)
+  removeUser(user, id){
+    this._dataService.removeUser(id)
   }
 
   ngOnInit() {
-    this._dataService.getAllTasks()
+    this._dataService.getAllUsers()
 
-    this._dataService.tasks.subscribe(result=>{
+    this._dataService.users.subscribe(result=>{
       this.dataSource = new MatTableDataSource(result)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort
-      console.log(result)
     })
   }
 
   submit(){
     console.log('form has been submitted')
   }
-  
+
 }

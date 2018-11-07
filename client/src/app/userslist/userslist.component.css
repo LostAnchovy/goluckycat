@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+  }
+
+  .card {
+    width: 90%;
+    margin: auto
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

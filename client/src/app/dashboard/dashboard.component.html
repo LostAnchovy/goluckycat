@@ -1,14 +1,17 @@
 <mat-tab-group>
   <mat-tab label="users">
     <ng-template matTabContent>
-      <div class="mt-5">
-        <app-taskslist></app-taskslist>
-      </div>
+        <app-userslist></app-userslist>
     </ng-template>
   </mat-tab>
   <mat-tab label="tasks">
     <ng-template matTabContent>
-      This is a list of users
+      <app-taskslist></app-taskslist>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="statistics">
+    <ng-template matTabContent>
+       site statistics will go here
     </ng-template>
   </mat-tab>
 </mat-tab-group>
