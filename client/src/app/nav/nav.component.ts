@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+user: any
   constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit() {
-
+   this.user =localStorage.getItem('user')
   }
 
   logOut(){
