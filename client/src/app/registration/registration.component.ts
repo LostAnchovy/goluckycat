@@ -16,12 +16,12 @@ export class RegistrationComponent implements OnInit {
     first_name: '',
     last_name: '',
     email: '',
-    username: '',
     password: '',
+    phone: '',
     category: '',
   };
   message = '';
-
+  result:any
   constructor(private _http:HttpClient, private _router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -31,7 +31,6 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone:['',Validators.required],
       category:['',Validators.required],
-      terms:['',Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
   });
   }
@@ -43,7 +42,15 @@ export class RegistrationComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     } 
-    console.log('form has been submmited')
+    return this._http.post('/api/newuser', this.user).subscribe(res=>{
+      this.result= res
+      console.log(this.result.user)
+        localStorage.setItem('token', this.result.token),
+        localStorage.setItem('user', this.result.user.first_name)
+        this._router.navigate(['/'])
+    }, err =>{
+      this.message = err.error.msg;
+    })
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

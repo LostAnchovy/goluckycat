@@ -19,7 +19,7 @@ exports.create =(req, res) =>{
         var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin }, process.env.SECRET, { expiresIn: '1d' });
         res.json({ success: true, token: token, user: user })
     }).catch(err=>{
-        res.status(501).send({ success: false, msg: 'Please try another Email'})
+        res.status(501).send({ success: false, msg: 'Please check all fields or try another Email'})
     })
 }
 
@@ -39,3 +39,43 @@ exports.create =(req, res) =>{
         res.status(401).send({ success: false, msg: 'error could not remove user from DB' })
     })
 }
+
+exports.signin = (req, res) => {
+    if (!req.body.email || !req.body.password) {
+        res.status(401).send({ login: false, msg: 'please enter a email and password' })
+    }
+    User.findOne({
+        email: req.body.email
+    }, (err, user) => {
+        if (err) throw err
+        if (!user) {
+            res.status(403).send({ success: false, msg: 'Authentication failed. User not found.' })
+        }
+    }).then((user) => {
+        let hash = user.password
+        console.log(hash)
+        //need to put in a check if user email is not found in the DB
+        //error fix: npm rebuild bcrypt --build-from-source
+        bcrypt.compare(req.body.password, hash, (err, result) => {
+            console.log('forms password:', req.body.password)
+            if (result) {
+                var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin }, process.env.SECRET, { expiresIn: '1d' });
+                res.json({ success: true, token: token, user: user })
+            } else {
+                res.status(403).send({ sucess: false, msg: 'Authentication failed. Wrong password' })
+            }
+        })
+    })
+}
+
+exports.update = (req, res) => {
+    var id = { _id: req.params.userId }
+    User.findByIdAndUpdate(id, req.body, { new: true })
+        .then((updatedUser) => {
+            res.json(updatedUser)
+        }).catch((err) => {
+            res.status(404).send({ success: false, msg: 'can not update user' })
+        })
+};
+
+// Need to pull all the task that are related to the user and display

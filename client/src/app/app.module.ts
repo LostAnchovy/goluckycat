@@ -19,6 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskslistComponent } from './taskslist/taskslist.component'
 import { DataService } from './data.service';
 import { UserslistComponent } from './userslist/userslist.component';
+import { RoleguardService} from './roleguard.service';
+import { UserComponent } from './user/user.component'
 
 @NgModule({
   declarations: [
@@ -34,18 +36,19 @@ import { UserslistComponent } from './userslist/userslist.component';
     ListingsComponent,
     DashboardComponent,
     TaskslistComponent,
-    UserslistComponent
+    UserslistComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
     MaterialModule,
     NgxPaginationModule
   ],
-  providers: [DataService],
+  providers: [DataService, RoleguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

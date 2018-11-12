@@ -12,6 +12,6 @@ router.put('/api/task/:taskId', Tasks.update)
 router.post('/api/newuser', Users.create)
 router.get('/api/users/all', Users.findAll)
 router.delete('/api/user/:userId', Users.delete);
-
+router.post('/signin', Users.signin)
 
 module.exports = router

@@ -20,11 +20,10 @@ const userSchema = mongoose.Schema({
     category:{
         type: String,
         enum:['user', 'provider'],
-        require: true 
     },
     isAdmin:{
         type:Boolean,
-        default:false,
+        default:true,
     },
     resetPasswordToken:{
         type: String

@@ -14,13 +14,13 @@ import {Observable} from "rxjs"
 
 export class ListingsComponent implements OnInit {
   p: number = 1;
-  tasks: any = []
+  tasks:any = []
 
   constructor(private _http: HttpClient) { }
   
-  // @Output('cdkDropDropped') 
-  // dropped: EventEmitter<CdkDragDrop< any>> = 
-  // new EventEmitter<CdkDragDrop< any>>();  
+  applyFilter(filterValue: any) {
+    this.tasks.filter = filterValue.trim().toLowerCase();
+  }
 
   ngOnInit() {
     this._http.get('/api/tasks/all').subscribe(res=>{

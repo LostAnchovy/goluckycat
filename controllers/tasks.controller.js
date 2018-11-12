@@ -8,6 +8,7 @@ exports.create = (req, res) =>{
         cost: req.body.costs
     }).then(newTask=>{
         res.json(newTask)
+        // need to referenece the creator of the tasks and push it into the created field
     }).catch(err=>{
         res.status(501).send({ success: false, msg: 'Tasks could not entered into DB' })
     })
