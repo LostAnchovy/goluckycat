@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 import {Observable} from "rxjs"
+import { AuthService } from '../auth.service';
 
 
 
@@ -16,7 +17,7 @@ export class ListingsComponent implements OnInit {
   p: number = 1;
   tasks:any = []
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _auth:AuthService) { }
   
   applyFilter(filterValue: any) {
     this.tasks.filter = filterValue.trim().toLowerCase();

@@ -9,10 +9,17 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 user: any
+_id: any
   constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit() {
    this.user =localStorage.getItem('user')
+   this._id = localStorage.getItem('id')
+   console.log(this._id)
+   }
+
+  userProfile(){
+    this._router.navigateByUrl(`/user/${this._id}`)
   }
 
   logOut(){

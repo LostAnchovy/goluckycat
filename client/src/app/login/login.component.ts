@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         console.log(this.result.user)
         localStorage.setItem('token', this.result.token),
         localStorage.setItem('user', this.result.user.first_name)
+        localStorage.setItem('id', this.result.user._id)
         if(this.result.user.isAdmin === true){
           this._router.navigateByUrl('/dashboard')
         }else{

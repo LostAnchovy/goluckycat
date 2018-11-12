@@ -10,6 +10,7 @@ import { ResetPasswordComponent} from './reset-password/reset-password.component
 import { ListingsComponent } from './listings/listings.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { RoleguardService as RoleGuard } from './roleguard.service';
+import { AuthService as AuthGuard } from './auth.service';
 import { UserComponent } from './user/user.component'
 
 

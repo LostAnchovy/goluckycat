@@ -47,7 +47,7 @@ export class RegistrationComponent implements OnInit {
       console.log(this.result.user)
         localStorage.setItem('token', this.result.token),
         localStorage.setItem('user', this.result.user.first_name)
-        this._router.navigate(['/'])
+        this._router.navigateByUrl(`/user/${this.result.user._id}`)
     }, err =>{
       this.message = err.error.msg;
     })

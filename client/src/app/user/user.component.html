@@ -1,3 +1,38 @@
-<p>
-  user works!
-</p>
+<div class="mt-5 p-3">
+  <div class="row">
+    <div class="col-md-12 text-center m-3">
+      <h1 class="mt-3 p-3">Welcome {{user}} </h1>  
+        <button mat-raised-button color="primary" class="text-center">Create a Task</button>
+    </div>
+  
+  </div>
+  
+  <section>
+      <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
+          <div class="col-md-12 mb-3" *ngFor="let task of tasks | paginate: { itemsPerPage: 3, currentPage: p}">
+            <div class="card">
+              <div class="card-header">あなたの日本語を必要としている人がいま  : {{task.createdAt | date: 'MMM d, y'}}</div>
+                <div class="card-body">
+                  <div class="card-text p-2">
+                    <h2>Task Title</h2>
+                    <p>{{task.title}}</p>
+                    <h2>Task Location</h2>
+                    <p>{{task.location}}</p>
+                    <h2>Description</h2>
+                    <p>{{task.description}}</p>
+                    <div class="d-inline p-2">
+                      <span class="font-weight-bold">cost ${{task.cost}}</span>
+                      <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
+                      <button mat-raised-button color="primary" class="float-right">Update Tasks</button>
+                      <button mat-raised-button color="warn" class="float-right">Delete Tasks</button>
+                    </div>
+                    <hr class="mt-5">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
+    </section>
+
+</div>

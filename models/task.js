@@ -14,6 +14,10 @@ const tasksSchema = mongoose.Schema({
     cost:{
         type: Number,
     },
+    isActive:{
+        type: Boolean,
+        default: true,
+    },
     User: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },{timestamps: true });
 
