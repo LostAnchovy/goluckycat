@@ -16,6 +16,8 @@ submitted = false;
 user ={
   email: ''
 }
+authenticated: boolean = false
+result: any =[]
 message = '';
   constructor( private _router: Router, private _http: HttpClient, private formBuilder: FormBuilder) { }
 
@@ -32,6 +34,20 @@ message = '';
     if (this.resetForm.invalid) {
       return;
     }
+
+    return this._http.post('/resetpassword', this.user).subscribe(res=>{
+      this.result= res
+      console.log(this.result)
+      if(res){
+        this.authenticated = true
+        this.message = ''
+      }
+    }, err =>{
+      if(err){
+        this.resetForm.reset()
+      }
+      this.message = err.error.msg;
+    })
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

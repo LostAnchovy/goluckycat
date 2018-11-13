@@ -19,7 +19,7 @@ _id: any
    }
 
   userProfile(){
-    this._router.navigateByUrl(`/user/${this._id}`)
+    this._router.navigateByUrl(`/profile/${this._id}`)
   }
 
   logOut(){

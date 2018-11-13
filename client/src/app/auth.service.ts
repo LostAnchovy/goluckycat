@@ -18,6 +18,10 @@ export class AuthService implements CanActivate {
     } 
   }
 
+ public getToken(): string {
+    return localStorage.getItem('token');
+  }
+
   public loggedIn(): string {
     return localStorage.getItem('token')
   }

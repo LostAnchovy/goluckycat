@@ -13,14 +13,17 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ListingsComponent } from './listings/listings.component';
-import { MaterialModule} from './material'
+import { MaterialModule} from './material';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskslistComponent } from './taskslist/taskslist.component'
 import { DataService } from './data.service';
 import { UserslistComponent } from './userslist/userslist.component';
 import { RoleguardService} from './roleguard.service';
-import { UserComponent } from './user/user.component'
+import { UserComponent } from './user/user.component';
+import { ResetComponent} from './reset/reset.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { UserComponent } from './user/user.component'
     DashboardComponent,
     TaskslistComponent,
     UserslistComponent,
-    UserComponent
+    UserComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ import { UserComponent } from './user/user.component'
     MaterialModule,
     NgxPaginationModule
   ],
-  providers: [DataService, RoleguardService],
+  providers: [DataService, RoleguardService,{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

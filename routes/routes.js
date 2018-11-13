@@ -13,5 +13,8 @@ router.post('/api/newuser', Users.create)
 router.get('/api/users/all', Users.findAll)
 router.delete('/api/user/:userId', Users.delete);
 router.post('/signin', Users.signin)
+router.post('/resetpassword', Users.reset)
+router.post ('/reset/:token', Users.resetconfirm)
+router.get ('/user/:token', Users.reset_password)
 
 module.exports = router

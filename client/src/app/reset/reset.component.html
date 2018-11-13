@@ -1,0 +1,22 @@
+<div class="container z-depth-1 container-fluid">
+    <div class="text-center">
+        <img src="../../assets/images/logo.png">
+        <h2 class="text-center">Update Password</h2>
+    </div>
+<form (ngSubmit)="resetpw()">
+      <div class="alert alert-danger m-2 text-center" *ngIf="message !== ''">
+              <span>{{message}}</span>
+            </div>
+  <div class="form-group">
+      <label> New Password</label>
+      <input type="password"  class="form-control" name="password" [(ngModel)]="user.password" />
+  </div>
+  <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password"  class="form-control" name ="cpassword" [(ngModel)]="user.cpassword" />
+  </div>
+  <div class="form-group">
+        <button class="btn-block rounded" type ="submit">Update Password</button> 
+      </div>
+</form>   
+</div>

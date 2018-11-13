@@ -8,5 +8,14 @@ h2{
 button{
     margin: 5px;
     margin-bottom: 10px;
+}
+td{
+    width: 25%
+}
 
+img{
+    width: 70px;
+}
+th{
+    font-weight: bolder
 }

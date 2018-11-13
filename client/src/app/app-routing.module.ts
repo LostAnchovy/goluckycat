@@ -12,14 +12,16 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { RoleguardService as RoleGuard } from './roleguard.service';
 import { AuthService as AuthGuard } from './auth.service';
 import { UserComponent } from './user/user.component'
+import { ResetComponent} from './reset/reset.component'
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[RoleGuard] },
-  { path: 'user/:userId', component: UserComponent},
+  { path: 'profile/:userId', component: UserComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'reset/:token', component: ResetComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotfoundComponent}
