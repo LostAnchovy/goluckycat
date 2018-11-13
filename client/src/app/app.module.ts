@@ -24,6 +24,7 @@ import { UserComponent } from './user/user.component';
 import { ResetComponent} from './reset/reset.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { NewtaskComponent } from './newtask/newtask.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     TaskslistComponent,
     UserslistComponent,
     UserComponent,
-    ResetComponent
+    ResetComponent,
+    NewtaskComponent
   ],
   imports: [
     BrowserModule,

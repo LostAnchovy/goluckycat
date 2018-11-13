@@ -13,6 +13,7 @@ import { RoleguardService as RoleGuard } from './roleguard.service';
 import { AuthService as AuthGuard } from './auth.service';
 import { UserComponent } from './user/user.component'
 import { ResetComponent} from './reset/reset.component'
+import { NewtaskComponent } from './newtask/newtask.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile/:userId', component: UserComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'reset/:token', component: ResetComponent},
+  { path: 'newtask', component: NewtaskComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotfoundComponent}

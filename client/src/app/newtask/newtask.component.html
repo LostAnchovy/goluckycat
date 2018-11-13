@@ -1,0 +1,51 @@
+<div class="container z-depth-1">
+  <div class="text-center">
+    <img src="../../assets/images/logo.png">
+    <h1> Create A New Task</h1>
+    <small>create a task to be compelted</small>
+  </div>
+  <form [formGroup]="taskForm"  (ngSubmit)="newTasks()">
+    <div class="alert alert-danger m-2 text-center" *ngIf="message == ''">
+        <span>{{message}}</span>
+    </div>
+    <div class="form-group">
+      <label>Task Title</label>
+      <input type="text" formControlName="title" class="form-control" name="title" [(ngModel)]="task.title"
+        [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.errors.required">First Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>location</label>
+      <input type="text" formControlName="location" class="form-control" name="location" [(ngModel)]="task.location"
+        [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+      <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+        <div *ngIf="f.location.errors.required">Location is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea type="text" formControlName="description" class="form-control" rows="7" name="description" [(ngModel)]="task.description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">Description is required</div>
+        <div *ngIf="f.description.errors.minlength">Password must be at least 10 characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Cost</label>
+      <input type="number" formControlName="costs" class="form-control" name="costs" [(ngModel)]="task.costs" [ngClass]="{ 'is-invalid': submitted && f.costs.errors }"/>
+      <div *ngIf="submitted && f.costs.errors" class="invalid-feedback">
+        <div *ngIf="f.costs.errors.required">cost is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn-block" type ="submit"  value ="ok">Create New Tasks</button>
+    </div>
+    <!-- <button class="btn btn-primary" type = "submit" [disabled]="providerForm.invalid"  value ="ok">Submit</button> -->
+  </form>
+</div>

@@ -18,7 +18,10 @@ const tasksSchema = mongoose.Schema({
         type: Boolean,
         default: true,
     },
-    User: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    creator:{
+        type: String
+    },
+    Providers: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },{timestamps: true });
 
 var Tasks = mongoose.model('Tasks', tasksSchema)

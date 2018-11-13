@@ -206,4 +206,15 @@ exports.reset_password = (req, res) => {
     })
 }
 
+// exports.findOne = (req, res) =>{
+//     var token = getToken(req.headers)
+//     var dtoken = decoded(token)
+//     var id = dtoken._id
+//     User.findOne(id).populate('tasks').exec((err, user)=>{
+//         if (err) throw err
+//         res.json(user)
+//     })
+// }
+
+
 // Need to pull all the task that are related to the user and display

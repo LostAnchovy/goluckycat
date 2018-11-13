@@ -35,7 +35,7 @@ export class TaskslistComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   removeTask(id){
-    this._dataService.removeTask(id)
+    this._dataService.removeAdminTask(id)
   }
 
   ngOnInit() {

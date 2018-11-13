@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
   users = new BehaviorSubject([])
   tasks = new BehaviorSubject([])
+  userTasks = new BehaviorSubject([])
 
   constructor(private _http:HttpClient) { }
 
@@ -24,6 +25,13 @@ export class DataService {
     })
   }
 
+  getUserTasks(id){
+    this._http.get('/api/task/' + id).subscribe((response:any)=>{
+      this.userTasks.next(response)
+    })
+  }
+
+
   removeUser(id) {
     this._http.delete('/api/user/' + id).subscribe(
       (response: any[]) => {
@@ -32,10 +40,18 @@ export class DataService {
     );
   }
 
-  removeTask(id) {
+  removeAdminTask(id) {
     this._http.delete('/api/task/' + id).subscribe(
       (response: any[]) => {
         this.getAllTasks();
+       }
+    );
+  }
+
+  removeTask(id) {
+    this._http.delete('/api/task/' + id).subscribe(
+      (response: any[]) => {
+        this.getUserTasks(id);
        }
     );
   }

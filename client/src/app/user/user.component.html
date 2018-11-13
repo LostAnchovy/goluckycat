@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12 text-center m-3">
       <h1 class="mt-3 p-3">Welcome {{user}} </h1>
-      <button mat-raised-button color="primary" class="text-center">Create a Task</button>
+      <button mat-raised-button color="primary" class="text-center" routerLink="/newtask">Create a Task</button>
     </div>
 
   </div>
@@ -24,7 +24,7 @@
                 <span class="font-weight-bold">cost ${{task.cost}}</span>
                 <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
                 <button mat-raised-button color="primary" class="float-right">Update Tasks</button>
-                <button mat-raised-button color="warn" class="float-right">Delete Tasks</button>
+                <button mat-raised-button color="warn" class="float-right" (click)="removeTask(task._id)">Delete Tasks</button>
               </div>
             </div>
           </div>
