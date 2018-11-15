@@ -8,12 +8,13 @@ router.post('/api/newtasks', Tasks.create)
 router.get('/api/tasks/all', Tasks.findAll)
 router.delete('/api/task/:taskId', Tasks.delete)
 router.put('/api/task/:taskId', Tasks.update)
-router.get('/api/task/:id', Tasks.findTasks)
+router.get('/api/task/:taskId', Tasks.findTasks)
+router.get('/api/onetask/:taskId', Tasks.findOneTask)
 
 router.post('/api/newuser', Users.create)
 router.get('/api/users/all', Users.findAll)
 router.delete('/api/user/:userId', Users.delete);
-// router.get('/api/user/:id', Users.findOne)
+router.get('/api/user/:id', Users.findOne)
 
 
 

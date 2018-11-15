@@ -1,0 +1,37 @@
+<div class="container z-depth-1">
+  <div class="text-center">
+    <img src="../../assets/images/logo.png">
+    <h1> Edit Task</h1>
+    <small>update task here</small>
+  </div>
+  <form #form="ngForm" (ngSubmit)="updatedTasks(task._id)">
+    <div class="alert alert-danger m-2 text-center" *ngIf="message == ''">
+        <span>{{message}}</span>
+    </div>
+    <div class="form-group">
+      <label>Task Title</label>
+      <input type="text" class="form-control" name="title"  label="Title" [(ngModel)]="task.title" #Title="ngModel" required/>
+      <!-- <input class="form-control" type="text" name ="title" label="Title" [(ngModel)]="task.title" #Title="ngModel"required> -->
+    </div>
+
+    <div class="form-group">
+      <label>location</label>
+      <input type="text"  class="form-control" name="location" [(ngModel)]="task.location"/>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea type="text" class="form-control" rows="7" name="description" [(ngModel)]="task.description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Cost</label>
+      <input type="number" class="form-control" name="costs" [(ngModel)]="task.cost"/>
+    </div>
+
+    <div class="form-group">
+        <button class="btn-block" type ="submit"  value ="ok">Update Task</button>
+    </div>
+    <!-- <button class="btn btn-primary" type = "submit" [disabled]="providerForm.invalid"  value ="ok">Submit</button> -->
+  </form>
+</div>

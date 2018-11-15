@@ -18,7 +18,7 @@ tasks:any = []
   ngOnInit() {
     this.user = localStorage.getItem('user')
     this.id = localStorage.getItem('id')
-    console.log(this.id)
+    console.log('user currently loggedIn:',this.id)
 
     this._http.get(`/api/task/${this.id}`).subscribe(res=>{
       this.tasks = res 

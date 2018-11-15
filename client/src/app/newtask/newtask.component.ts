@@ -31,7 +31,7 @@ _id: any
       description: ['',[Validators.required, Validators.minLength(10)]],
       costs:['', Validators.required],
   });
-  this._id = localStorage.get('id')
+  this._id = localStorage.getItem('id')
   }
   get f() { return this.taskForm.controls; }
 

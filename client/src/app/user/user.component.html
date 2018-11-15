@@ -23,7 +23,7 @@
               <div class="d-inline p-2">
                 <span class="font-weight-bold">cost ${{task.cost}}</span>
                 <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
-                <button mat-raised-button color="primary" class="float-right">Update Tasks</button>
+                <button mat-raised-button color="primary" class="float-right" [routerLink]="['/edittask', task._id]">Update Tasks</button>
                 <button mat-raised-button color="warn" class="float-right" (click)="removeTask(task._id)">Delete Tasks</button>
               </div>
             </div>

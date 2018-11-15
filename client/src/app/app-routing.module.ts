@@ -14,16 +14,18 @@ import { AuthService as AuthGuard } from './auth.service';
 import { UserComponent } from './user/user.component'
 import { ResetComponent} from './reset/reset.component'
 import { NewtaskComponent } from './newtask/newtask.component';
+import { EdittaskComponent } from './edittask/edittask.component';
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[RoleGuard] },
-  { path: 'profile/:userId', component: UserComponent},
+  { path: 'profile/:userId', component: UserComponent, canActivate:[AuthGuard]},
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'reset/:token', component: ResetComponent},
   { path: 'newtask', component: NewtaskComponent},
+  { path: 'edittask/:taskId', component: EdittaskComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotfoundComponent}

@@ -51,8 +51,20 @@ exports.update = (req, res) => {
 };
 
 exports.findTasks = (req, res) =>{
-    var id ={creator: req.params.id}
+    var token = req.body.token || req.query.token || getToken(req.headers)
+    var dtoken = jwt.decode(token)
+    var id = dtoken._id
+    var id ={creator: id}
     Tasks.find(id).then(result=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.status(501).send({ success: false, msg:'error finding user tasks'})
+    })
+}
+
+exports.findOneTask = (req, res) =>{
+    var id ={_id: req.params.taskId}
+    Tasks.findOne(id).then(result=>{
         res.json(result)
     }).catch((err)=>{
         res.status(501).send({ success: false, msg:'error finding user tasks'})

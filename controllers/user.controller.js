@@ -23,11 +23,40 @@ exports.create = (req, res) => {
     })
 }
 
-exports.findAll = (req, res) => {
-    user.find().then(users => {
-        res.json(users)
+exports.findOne = (req, res) => {
+    var id = {_id:req.params.id}
+    user.findOne(id).then(user => {
+        res.json(user)
     }).catch(err => {
         res.status(404).send({ error: 'could not retrieve user' })
+    })
+}
+
+
+// exports.findAll = (req, res) => {
+//     user.find().then(users => {
+//         res.json(users)
+//     }).catch(err => {
+//         res.status(404).send({ error: 'could not retrieve user' })
+//     })
+// }
+
+exports.findAll = (req, res) => {
+    var token = req.body.token || req.query.token || getToken(req.headers)
+    console.log('parced authorization token:', token)
+    jwt.verify(token, process.env.SECRET, (err, result) => {
+        console.log("findaAll user:", user)
+        if (err) {
+            res.status(401).send({ success: false, msg: 'Please provide a valid token' })
+        } else if (result.isAdmin == false || result.isAdmin == null) {
+            res.status(401).send({ success: false, msg: 'Unauthorized' })
+        } else {
+            user.find().then((users) => {
+                    res.json(users)
+                }).catch((err) => {
+                    res.status(404).send({ error: 'could not retrieve all user' })
+                })
+        }
     })
 }
 
