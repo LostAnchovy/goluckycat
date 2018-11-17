@@ -9,7 +9,8 @@ export interface UserInterface {
     title: String, 
     location: string;
     cost: number;
-    created: String
+    created: String,
+    Supsend: string,
     Admin: string,
   }
 
@@ -20,7 +21,7 @@ export interface UserInterface {
 })
 export class TaskslistComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'location','cost', 'created', 'Admin'];
+  displayedColumns: string[] = ['title', 'location','cost', 'created','Suspend', 'Admin', ];
   dataSource: any 
  
 

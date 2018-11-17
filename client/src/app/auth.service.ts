@@ -24,6 +24,20 @@ export class AuthService implements CanActivate {
     return localStorage.getItem('token');
   }
 
+  // Checks token and checks to see what type of user is loggedIn. Function is used as a toggle to display interested button. Users/Admin butto is not shown; but providers are able to view intereseted button
+//  public userType(): any {
+//     var token = localStorage.getItem('token')
+//     var decodedToken = decode(token)
+//     if(!token){
+//       this._router.navigateByUrl('/')
+//     }
+//     else if(decodedToken.userType == 'user' || decodedToken.isAdmin == true){
+//       return false
+//     }
+//       return true 
+
+//  }
+
   public loggedIn(): string {
     return localStorage.getItem('token')
   }

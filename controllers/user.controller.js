@@ -16,7 +16,7 @@ exports.create = (req, res) => {
         phone: req.body.phone,
         category: req.body.category
     }).then(user => {
-        var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin }, process.env.SECRET, { expiresIn: '1d' });
+        var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin, userType: user.category }, process.env.SECRET, { expiresIn: '1d' });
         res.json({ success: true, token: token, user: user })
     }).catch(err => {
         res.status(501).send({ success: false, msg: 'Please check all fields or try another Email' })
@@ -88,7 +88,7 @@ exports.signin = (req, res) => {
         bcrypt.compare(req.body.password, hash, (err, result) => {
             console.log('forms password:', req.body.password)
             if (result) {
-                var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin }, process.env.SECRET, { expiresIn: '1d' });
+                var token = jwt.sign({ _id: user._id, firstName: user.first_name, isAdmin: user.isAdmin, userType: user.category }, process.env.SECRET, { expiresIn: '1d' });
                 res.json({ success: true, token: token, user: user })
             } else {
                 res.status(403).send({ sucess: false, msg: 'Authentication failed. Wrong password' })

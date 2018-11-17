@@ -9,7 +9,7 @@
 
   <section>
     <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
-      <div class="col-md-12 mb-3" *ngFor="let task of tasks | paginate: { itemsPerPage: 3, currentPage: p}">
+      <div class="col-md-12 mb-3" *ngFor="let task of tasks | sort: '-createdAt'  | paginate: { itemsPerPage: 3, currentPage: p}">
         <div class="card">
           <div class="card-header">あなたの日本語を必要としている人がいま : {{task.createdAt | date: 'MMM d, y'}}</div>
           <div class="card-body">

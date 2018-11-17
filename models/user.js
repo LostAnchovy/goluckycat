@@ -31,6 +31,14 @@ const userSchema = mongoose.Schema({
     resetPasswordExpires:{
         type: Date
     },
+    rating:{
+        type: Number,
+        default: null
+    },
+    bio:{
+        type: String,
+        default: null
+    },
     tasks: [{ type: Schema.Types.ObjectId, ref: 'Tasks' }]
 },{timestamps: true });
 

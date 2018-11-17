@@ -14,9 +14,9 @@
 <!-- Start of Listings  -->
 <section>
   <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
-      <div class="col-md-12 mb-3" *ngFor="let task of tasks | paginate: { itemsPerPage: 5, currentPage: p}">
+      <div class="col-md-12 mb-3" *ngFor="let task of tasks | sort: '-createdAt' | paginate: { itemsPerPage: 5, currentPage: p}">
         <div class="card bg-light" *ngIf="task.isActive == true" cdkDrag>
-          <div class="card-header">あなたの日本語を必要としている人がいま  : {{task.createdAt | date: 'MMM d, y'}}</div>
+          <div class="card-header">Task Created On : {{task.createdAt | date: 'MMM d, y'}}</div>
             <div class="card-body">
               <div class="card-text p-2">
                 <h2>Task Title</h2>
@@ -28,6 +28,7 @@
                 <div class="d-inline p-2">
                   <span class="font-weight-bold">cost ${{task.cost}}</span>
                   <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
+                  <!-- <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.userType()">Interested</button> -->
                   <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.loggedIn()">Interested</button>
                 </div>
             </div>

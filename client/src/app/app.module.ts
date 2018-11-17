@@ -26,6 +26,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EdittaskComponent } from './edittask/edittask.component';
     UserComponent,
     ResetComponent,
     NewtaskComponent,
-    EdittaskComponent
+    EdittaskComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
