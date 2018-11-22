@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.isloggedIn()
   }
-
+  //checks to see if there is a token in the localStorage. If no token then clear the localStorage. If there is a token then validate it for the exp. If token is exp then clear the local storage
   isloggedIn(){
     var token = localStorage.getItem('token')
     if(!token){
@@ -24,9 +24,8 @@ export class AppComponent implements OnInit {
     }else{
       var tokenPayload = decode(token)
       var dateNow = new Date()
-      console.log('app:', tokenPayload.exp)
       if(tokenPayload.exp < dateNow.getTime()/1000){
-        localStorage.clear()
+        localStorage.removeItem('token')
         return false
       }
     }
