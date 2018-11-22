@@ -8,10 +8,10 @@ exports.create = (req, res) =>{
     var token =  getToken(req.headers)
     var dtoken = jwt.decode(token)
     var id = dtoken._id
-    console.log('tasks', id)
     Tasks.create({
         title: req.body.title,
         location: req.body.location,
+        date: req.body.dates,
         description: req.body.description,
         cost: req.body.costs,
         creator: id

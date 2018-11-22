@@ -11,6 +11,9 @@ const tasksSchema = mongoose.Schema({
     description:{
         type: String,
     },
+    date:{
+        type: Date,
+    },
     cost:{
         type: Number,
     },
