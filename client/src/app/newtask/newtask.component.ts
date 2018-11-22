@@ -16,6 +16,7 @@ submitted = false;
 task ={
   title: '',
   location: '',
+  dates: '',
   description: '',
   costs: ''
 };
@@ -28,6 +29,7 @@ _id: any
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       location: ['', Validators.required],
+      dates: ['', Validators.required],
       description: ['',[Validators.required, Validators.minLength(10)]],
       costs:['', Validators.required],
   });

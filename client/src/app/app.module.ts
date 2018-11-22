@@ -27,6 +27,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
 import { SortPipe } from './sort.pipe';
+import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SortPipe } from './sort.pipe';
     NewtaskComponent,
     EdittaskComponent,
     SortPipe,
+    ProviderProfileComponent,
   ],
   imports: [
     BrowserModule,

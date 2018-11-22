@@ -27,6 +27,14 @@
     </div>
 
     <div class="form-group">
+      <label>Task Date</label>
+      <input type ="date" formControlName="dates" class="form-control" name ="dates" [(ngModel)]="task.dates" [ngClass]="{ 'is-invalid': submitted && f.dates.errors }">
+      <div *ngIf="submitted && f.dates.errors" class="invalid-feedback">
+          <div *ngIf="f.dates.errors.required">task date required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
       <label>Description</label>
       <textarea type="text" formControlName="description" class="form-control" rows="7" name="description" [(ngModel)]="task.description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
       <div *ngIf="submitted && f.description.errors" class="invalid-feedback">

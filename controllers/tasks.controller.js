@@ -1,9 +1,11 @@
 var Tasks = require('../models/task.js')
 var jwt = require('jsonwebtoken');
 var User = require('../models/user')
+var decoded = require('jwt-decode');
 
 exports.create = (req, res) =>{
-    var token = req.body.token || req.query.token || getToken(req.headers)
+    // Grabs the person who is currently logged in from the headers and assigns the creator id to the task
+    var token =  getToken(req.headers)
     var dtoken = jwt.decode(token)
     var id = dtoken._id
     console.log('tasks', id)
@@ -15,7 +17,6 @@ exports.create = (req, res) =>{
         creator: id
     }).then(newTask=>{
         res.json(newTask)
-        // need to referenece the creator of the tasks and push it into the created field
     }).catch(err=>{
         res.status(501).send({ success: false, msg: 'Tasks could not entered into DB' })
     })
@@ -31,6 +32,7 @@ exports.findAll = (req,res)=>{
 }
 
 exports.delete = (req, res)=>{
+    // only the creator or the admin should be the one who is able to delete the task.
     var id = req.params.taskId
     Tasks.remove({_id: req.params.taskId}).then(()=>{
         res.status(200).send({success: true, msg:`tasks ${id} was successfully deleted`})
@@ -39,6 +41,16 @@ exports.delete = (req, res)=>{
     })
 }
 
+exports.addProvider = (req, res)=>{
+    var id = {_id: req.params.taskId}
+    var token =  getToken(req.headers)
+    var dtoken = decoded(token)
+    var providerId = dtoken._id
+    Tasks.findByIdAndUpdate(id, {$push: {Providers: providerId}}, { new: true }).then(user=>{
+        res.json(user)
+    })
+    
+}
 
 exports.update = (req, res) => {
     var id = {_id: req.params.taskId}
@@ -51,11 +63,11 @@ exports.update = (req, res) => {
 };
 
 exports.findTasks = (req, res) =>{
-    var token = req.body.token || req.query.token || getToken(req.headers)
+    var token = getToken(req.headers)
     var dtoken = jwt.decode(token)
-    var id = dtoken._id
-    var id ={creator: id}
-    Tasks.find(id).then(result=>{
+    var creatorId = dtoken._id
+    var id ={creator: creatorId}
+    Tasks.find(id).populate('Providers').then(result=>{
         res.json(result)
     }).catch((err)=>{
         res.status(501).send({ success: false, msg:'error finding user tasks'})

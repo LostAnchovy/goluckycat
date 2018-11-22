@@ -23,6 +23,7 @@ exports.create = (req, res) => {
     })
 }
 
+
 exports.findOne = (req, res) => {
     var id = {_id:req.params.id}
     user.findOne(id).then(user => {
