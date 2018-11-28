@@ -12,6 +12,9 @@
       <div class="col-md-12 mb-3" *ngFor="let task of tasks | sort: '-createdAt'  | paginate: { itemsPerPage: 3, currentPage: p}">
         <div class="card">
           <div class="card-header">あなたの日本語を必要としている人がいま</div>
+          <div>
+              <h2 class="text-center text-danger"*ngIf ="task.isActive !== true">Task in Progress and has been removed from listings</h2>
+            </div>
           <div class="card-body">
             <div class="card-text p-2">
               <h2>Task Title</h2>
@@ -25,12 +28,13 @@
               <div class="d-inline p-2">
                 <span class="font-weight-bold">cost ${{task.cost}}</span>
                 <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
-                <button mat-raised-button color="primary" class="float-right" [routerLink]="['/edittask', task._id]">Update Tasks</button>
+                <button mat-raised-button color="primary" class="float-right" [routerLink]="['/edittask', task._id]" *ngIf ="task.isActive !== false">Update Tasks</button>
+                <button mat-raised-button color="primary" class="float-right" *ngIf ="task.isActive !== true" (click)=" isreactivate(task._id)">Reactivate Tasks</button>
                 <button mat-raised-button color="warn" class="float-right" (click)="removeTask(task._id)">Delete Tasks</button>
               </div>
             </div>
           </div>
-          <table class="table table-hover text-center">
+          <table class="table table-hover text-center" *ngIf ="task.isActive == true">
             <thead>
               <tr>
                 <th scope="col" class="text-left">Provider</th>
@@ -44,7 +48,7 @@
                 <td><img src="../../assets/images/customer2.jpg" class="img-fluid rounded mr-3 float-left"></td>
                 <td scope="row"><a [routerLink]="['/provider', provider._id]">{{provider.first_name}}  {{provider.last_name}}</a></td>
                 <td>{{provider.rating}}  5<i class="fas fa-star ml-3"></i></td>
-                <td> <button mat-raised-button color="primary">Accept</button></td>
+                <td> <button mat-raised-button color="primary"(click)="isActive(task._id)">Accept</button></td>
               </tr>
               <!-- <tr>
                 <td><img src="../../assets/images/customer2.jpg" class="img-fluid rounded mr-3 float-left"></td>

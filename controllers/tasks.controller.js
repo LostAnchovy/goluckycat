@@ -52,6 +52,28 @@ exports.addProvider = (req, res)=>{
     
 }
 
+exports.accepted = (req, res) => {
+    var id = {_id: req.params.taskId}
+	Tasks.findByIdAndUpdate(id, {isActive:false},{new:true}) 
+	.then((updatedTasks) => {
+		res.json(updatedTasks)
+	}).catch((err)=>{
+        res.status(501).send({ success: false, msg:'error updating tasks'})
+    })
+};
+
+exports.reactivate = (req, res) => {
+    var id = {_id: req.params.taskId}
+	Tasks.findByIdAndUpdate(id, {isActive:true},{new:true}) 
+	.then((updatedTasks) => {
+		res.json(updatedTasks)
+	}).catch((err)=>{
+        res.status(501).send({ success: false, msg:'error updating tasks'})
+    })
+};
+
+
+
 exports.update = (req, res) => {
     var id = {_id: req.params.taskId}
 	Tasks.findByIdAndUpdate(id,req.body,{new:true}) 
