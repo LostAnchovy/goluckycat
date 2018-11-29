@@ -53,6 +53,18 @@ export class AuthService implements CanActivate {
     }
 
   }
+  public provider(): boolean{
+    var token = localStorage.getItem('token')
+    if(!token){
+      return false
+    }
+    const tokenPayload = decode(token)
+    if(tokenPayload.userType === 'provider'){
+      return true
+    }else{
+      return false
+    }
+  }
 
 
 }

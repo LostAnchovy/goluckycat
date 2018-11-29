@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
     },
     category:{
         type: String,
-        enum:['user', 'provider'],
+        enum:['user', 'provider', 'admin'],
     },
     isAdmin:{
         type:Boolean,

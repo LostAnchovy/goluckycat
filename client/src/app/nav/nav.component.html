@@ -27,10 +27,14 @@
                 <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="_auth.admin()" >
                     <a class="nav-link" [routerLink]="['dashboard']">Welcome Admin</a>
                </li>
-               <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="!_auth.admin()">
+               <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="!_auth.provider() && !_auth.admin()">
                 <!-- <a class="nav-link" (click)="userProfile()">User Profile</a> -->
                 <a class="nav-link" [routerLink]="['/profile', _id]">User Profile</a>
-             </li> 
+             </li>
+             <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="_auth.provider()">
+                    <!-- <a class="nav-link" (click)="userProfile()">User Profile</a> -->
+                    <a class="nav-link" [routerLink]="['/provider', _id]">Provider Profile</a>
+                 </li> 
                 <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show">
                   <a class="nav-link" (click)="logOut()">Log Out</a>
                </li> 
