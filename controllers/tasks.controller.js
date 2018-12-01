@@ -2,6 +2,7 @@ var Tasks = require('../models/task.js')
 var jwt = require('jsonwebtoken');
 var User = require('../models/user')
 var decoded = require('jwt-decode');
+var async = require('async');
 
 exports.create = (req, res) =>{
     // Grabs the person who is currently logged in from the headers and assigns the creator id to the task
@@ -41,15 +42,41 @@ exports.delete = (req, res)=>{
     })
 }
 
-exports.addProvider = (req, res)=>{
+// exports.addProvider = (req, res)=>{
+//     var id = {_id: req.params.taskId}
+//     var token =  getToken(req.headers)
+//     var dtoken = decoded(token)
+//     var providerId = dtoken._id
+//     Tasks.findByIdAndUpdate(id, {$push: {Providers: providerId}}, { new: true }).then(user=>{
+//         res.json(user)
+//     })
+// }
+
+exports.addProvider =(req, res)=>{
     var id = {_id: req.params.taskId}
     var token =  getToken(req.headers)
     var dtoken = decoded(token)
-    var providerId = dtoken._id
-    Tasks.findByIdAndUpdate(id, {$push: {Providers: providerId}}, { new: true }).then(user=>{
-        res.json(user)
-    })
-    
+    var pId= dtoken._id
+    var providerId = {_id:dtoken._id}
+    var taskId = req.params.taskId
+    console.log('taskId', taskId)
+    console.log('providerId', providerId)
+
+    async.waterfall([
+        function(done){
+            Tasks.findByIdAndUpdate(id, {$push: {Providers: pId}}, { new: true }, (err, task)=>{
+                if (err) throw err
+                done(err, task)
+            }).then(()=>{
+                res.status(200).send({success: true, msg:'successfully added tasks'})
+            })
+        },
+        function(task, done){
+            User.findByIdAndUpdate(providerId, {$push:{tasks: taskId}}, {new:true}).then(()=>{
+            done(err, 'done') 
+            })
+        }
+    ])
 }
 
 exports.accepted = (req, res) => {
@@ -71,7 +98,6 @@ exports.reactivate = (req, res) => {
         res.status(501).send({ success: false, msg:'error updating tasks'})
     })
 };
-
 
 
 exports.update = (req, res) => {

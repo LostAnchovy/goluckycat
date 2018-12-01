@@ -25,28 +25,19 @@ exports.create = (req, res) => {
 
 
 exports.findOne = (req, res) => {
+    //possibly put some verifications; Admin is able to review all userData, User is able to only view UserData. Limit what is being sent back?
     var id = {_id:req.params.id}
     user.findOne(id).then(user => {
+        // res.json({userId: user._id, firstName: user.first_name, tasks: user.tasks})
         res.json(user)
     }).catch(err => {
         res.status(404).send({ error: 'could not retrieve user' })
     })
 }
 
-
-// exports.findAll = (req, res) => {
-//     user.find().then(users => {
-//         res.json(users)
-//     }).catch(err => {
-//         res.status(404).send({ error: 'could not retrieve user' })
-//     })
-// }
-
 exports.findAll = (req, res) => {
     var token = req.body.token || req.query.token || getToken(req.headers)
-    console.log('parced authorization token:', token)
     jwt.verify(token, process.env.SECRET, (err, result) => {
-        console.log("findaAll user:", user)
         if (err) {
             res.status(401).send({ success: false, msg: 'Please provide a valid token' })
         } else if (result.isAdmin == false || result.isAdmin == null) {
@@ -70,6 +61,7 @@ exports.delete = (req, res) => {
     })
 }
 
+// possibly integrate passport for jwt.authenication
 exports.signin = (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.status(401).send({ login: false, msg: 'please enter a email and password' })
@@ -83,7 +75,6 @@ exports.signin = (req, res) => {
         }
     }).then((user) => {
         let hash = user.password
-        console.log(hash)
         //need to put in a check if user email is not found in the DB
         //error fix: npm rebuild bcrypt --build-from-source
         bcrypt.compare(req.body.password, hash, (err, result) => {
@@ -99,6 +90,7 @@ exports.signin = (req, res) => {
 }
 
 exports.update = (req, res) => {
+    // only the authenicated registered user is allowed to update their information. 
     var id = { _id: req.params.userId }
     User.findByIdAndUpdate(id, req.body, { new: true })
         .then((updatedUser) => {
@@ -171,9 +163,7 @@ exports.resetconfirm = (req, res) => {
         }
     }
     var token = getAuthToken(req.headers.referer)
-
     // pulls the token from the req.headers.referer. Split it at / and return the part [4] which is the token
-
     async.waterfall([
         function (done) {
             User.findOne({ resetPasswordToken: token }, (err, user) => {

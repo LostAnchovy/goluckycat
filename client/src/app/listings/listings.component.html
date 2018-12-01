@@ -18,6 +18,7 @@
         <div class="card bg-light" *ngIf="task.isActive == true" cdkDrag>
           <div class="card-header text-center">{{task.title}}</div>
             <div class="card-body">
+              <!-- <div> <h2 class="text-danger text-center">This Task has been added to your Interested jobs</h2></div> -->
               <div class="card-text p-2">
                 <h2>Task Date</h2>
                 <p>{{task.date | date: 'MMM d, y'}}</p>
@@ -27,9 +28,7 @@
                 <p>{{task.description}}</p>
                 <div class="d-inline p-2">
                   <span class="font-weight-bold">cost ${{task.cost}}</span>
-                  <!-- <button class="float-right btn btn-outline-success">Interested</button> -->
-                  <!-- <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.userType()">Interested</button> -->
-                  <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.provider()" (click)="addTask(task._id)">Interested</button>
+                  <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.provider()" (click)="addTask(task._id)" [disabled]=" ">Interested</button>
                 </div>
             </div>
           </div>

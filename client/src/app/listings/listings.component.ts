@@ -6,7 +6,6 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-listings',
   templateUrl: './listings.component.html',
@@ -18,7 +17,6 @@ export class ListingsComponent implements OnInit {
   p: number = 1;
   tasks:any = []
   taskId: any
-
   constructor(private _http: HttpClient, private _auth:AuthService, private _router: Router) { }
   
   applyFilter(filterValue: any) {

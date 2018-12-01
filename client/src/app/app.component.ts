@@ -20,15 +20,12 @@ export class AppComponent implements OnInit {
     var token = localStorage.getItem('token')
     if(!token){
       localStorage.clear()
-      return false
     }else{
       var tokenPayload = decode(token)
       var dateNow = new Date()
       if(tokenPayload.exp < dateNow.getTime()/1000){
         localStorage.removeItem('token')
-        return false
       }
     }
-        return true 
   }
 }

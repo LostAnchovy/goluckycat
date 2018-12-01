@@ -9,11 +9,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
-    imports: [DragDropModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatTabsModule, BrowserAnimationsModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatIconModule],
-    exports: [DragDropModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatTabsModule, BrowserAnimationsModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatIconModule]
+    imports: [DragDropModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatTabsModule, BrowserAnimationsModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatIconModule, MatButtonToggleModule],
+    exports: [DragDropModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatTabsModule, BrowserAnimationsModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatIconModule, MatButtonToggleModule]
 })
 
 export class MaterialModule {}

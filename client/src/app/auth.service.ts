@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router, CanActivate} from '@angular/router'
 import { Observable } from 'rxjs';
 import * as decode from 'jwt-decode';
@@ -9,7 +8,7 @@ import * as decode from 'jwt-decode';
 })
 export class AuthService implements CanActivate {
 
-  constructor(private _http: HttpClient, private _router: Router) { }
+  constructor(private _router: Router) { }
 
   public canActivate(): any {
     const token = localStorage.getItem('token')
@@ -43,7 +42,7 @@ export class AuthService implements CanActivate {
   }
 
   // This will be used in the to determine if the user signed in has administrative rights.
-  public admin(){
+  public admin(): boolean {
     var token = localStorage.getItem('token')
     const tokenPayload = decode(token)
     if(tokenPayload.isAdmin == false){
@@ -53,6 +52,7 @@ export class AuthService implements CanActivate {
     }
 
   }
+
   public provider(): boolean{
     var token = localStorage.getItem('token')
     if(!token){
@@ -65,6 +65,8 @@ export class AuthService implements CanActivate {
       return false
     }
   }
+
+  // isProvider should only allow the current logged in provider to make changes to their profile. Takes userId and validates its. If userId === req.params?
 
 
 }
