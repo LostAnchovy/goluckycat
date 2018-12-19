@@ -39,6 +39,10 @@ const userSchema = mongoose.Schema({
         type: String,
         default: null
     },
+    bio2:{
+        type: String,
+        default: null
+    },
     tasks: [{ type: Schema.Types.ObjectId, ref: 'Tasks' }]
 },{timestamps: true });
 

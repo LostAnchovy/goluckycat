@@ -24,9 +24,10 @@ exports.create = (req, res) =>{
 }
 
 exports.findAll = (req,res)=>{
+    // task should be removed if the creatorId is no longer in the database
     Tasks.find()
     .then((tasks)=>{
-        res.json(tasks)
+      res.json(tasks)
     }).catch((err)=>{
         res.status(501).send({ success: false, msg:'could not retrieve tasks'})
     })
@@ -71,7 +72,7 @@ exports.addProvider =(req, res)=>{
                 res.status(200).send({success: true, msg:'successfully added tasks'})
             })
         },
-        function(task, done){
+        function(done){
             User.findByIdAndUpdate(providerId, {$push:{tasks: taskId}}, {new:true}).then(()=>{
             done(err, 'done') 
             })

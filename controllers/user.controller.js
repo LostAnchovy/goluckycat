@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Tasks = require('../models/task.js')
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var decoded = require('jwt-decode');
@@ -52,14 +53,30 @@ exports.findAll = (req, res) => {
     })
 }
 
-exports.delete = (req, res) => {
+exports.delete = (req, res)=>{
     var id = req.params.userId
-    user.remove({ _id: req.params.userId }).then(() => {
-        res.status(200).send({ success: true, msg: `user id:${id} was successfully deleted` })
-    }).catch((err) => {
-        res.status(401).send({ success: false, msg: 'error could not remove user from DB' })
+    Tasks.deleteMany({creator:id}, (err)=>{
+        if (err){
+            res.status(401)
+        }
+    }).then(()=>{
+        user.remove({_id: req.params.userId}, (err)=>{
+            if (err) throw err
+        }).then(()=>{
+            res.status(200)
+            console.log('user was deleted')
+        })
     })
 }
+
+// exports.delete = (req, res) => {
+//     var id = req.params.userId
+//     user.remove({ _id: req.params.userId }).then(() => {
+//         res.status(200).send({ success: true, msg: `user id:${id} was successfully deleted` })
+//     }).catch((err) => {
+//         res.status(401).send({ success: false, msg: 'error could not remove user from DB' })
+//     })
+// }
 
 // possibly integrate passport for jwt.authenication
 exports.signin = (req, res) => {
@@ -102,14 +119,14 @@ exports.update = (req, res) => {
 
 exports.reset = (req, res, next) => {
     async.waterfall([
-        (done) => {
+        function(done) {
             crypto.randomBytes(20, function (err, buf) {
                 var token = buf.toString('hex');
                 console.log(token)
                 done(err, token);
             });
         },
-        (token, done) => {
+        function (token, done){
             User.findOne({ email: req.body.email }, (err, user) => {
                 if (err) throw err
                 if (!user) {
@@ -135,8 +152,8 @@ exports.reset = (req, res, next) => {
 
             var mailOptions = {
                 to: user.email,
-                from: 'passwordreset@nyjahwood.com',
-                subject: 'Nyjahwood Password Reset',
+                from: 'passwordreset@goluckycat.com',
+                subject: 'GoluckyCat Password Reset',
                 text: user.first_name + ' , ' +
                     'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -196,13 +213,12 @@ exports.resetconfirm = (req, res) => {
             });
             var mailOptions = {
                 to: user.email,
-                from: 'passwordreset@nyjahwood',
+                from: 'passwordreset@GoLuckyCat',
                 subject: 'Your password has been changed',
                 text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed at nyjahwood.com. Please contact our support staff if is any issue. Thank you. \n'
+                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed at GoLuckyCat.com. Please contact our support staff if is any issue. Thank you. \n'
             };
             smtpTransport.sendMail(mailOptions, (err) => {
-                // req.flash('success', 'Success! Your password has been changed.');
                 done(err);
             });
         }
