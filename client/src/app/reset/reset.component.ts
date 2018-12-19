@@ -28,7 +28,6 @@ message = '';
   ngOnInit() {
     this._http.get(`/user/${this.token}`, this.token).subscribe(res=>{
       this.token = res
-      console.log(this.token)
     }, err =>{
       this.message = err.error.msg;
     })

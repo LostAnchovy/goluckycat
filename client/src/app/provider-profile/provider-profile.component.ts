@@ -16,7 +16,7 @@ export class ProviderProfileComponent implements OnInit {
  // pull profile based on the #id from the params 
  this.activatedRoute.params.subscribe((params) => {
   this.id = params.providerId;});
-  console.log(this.id)
+  console.log("provider parmasId",this.id)
   }
 
   ngOnInit() {

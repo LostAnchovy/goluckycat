@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
 
@@ -8,17 +8,16 @@ import { DataService } from '../data.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-user:any
-id: String = ''
-p: number = 1;
-tasks:any = []
+private user:any
+private id: String = ''
+private p: number = 1;
+private tasks:any = []
 
   constructor(private _http: HttpClient, private _dataService: DataService) { }
   
   ngOnInit() {
     this.user = localStorage.getItem('user')
     this.id = localStorage.getItem('id')
-    console.log('user currently loggedIn:',this.id)
 
     this._http.get(`/api/task/${this.id}`).subscribe(res=>{
       this.tasks = res 

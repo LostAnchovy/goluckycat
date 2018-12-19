@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
-import {BehaviorSubject, Observable} from 'rxjs';
 import { DataService } from '../data.service';
 
 export interface UserInterface {
@@ -37,6 +36,7 @@ export class UserslistComponent implements OnInit {
 
   removeUser(user, id){
     this._dataService.removeUser(id)
+    this.ngOnInit()
   }
 
   ngOnInit() {
@@ -47,10 +47,6 @@ export class UserslistComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort
     })
-  }
-
-  submit(){
-    console.log('form has been submitted')
   }
 
 }

@@ -28,6 +28,8 @@ import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
 import { SortPipe } from './sort.pipe';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
+import { BarchartComponent} from './barchart/barchart.component'
+
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ProviderProfileComponent } from './provider-profile/provider-profile.co
     EdittaskComponent,
     SortPipe,
     ProviderProfileComponent,
+    BarchartComponent
   ],
   imports: [
     BrowserModule,

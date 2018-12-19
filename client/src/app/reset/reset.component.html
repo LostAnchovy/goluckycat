@@ -16,7 +16,7 @@
       <input type="password"  class="form-control" name ="cpassword" [(ngModel)]="user.cpassword" />
   </div>
   <div class="form-group">
-        <button class="btn-block rounded" type ="submit">Update Password</button> 
+        <button class="btn-block rounded" type ="submit" [disabled]="message">Update Password</button> 
       </div>
 </form>   
 </div>

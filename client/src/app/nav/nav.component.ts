@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service'
 import { Router } from '@angular/router';
 
@@ -15,7 +15,6 @@ _id: any
   ngOnInit() {
    this.user =localStorage.getItem('user')
    this._id = localStorage.getItem('id')
-   console.log(this._id)
    }
 
   userProfile(){
