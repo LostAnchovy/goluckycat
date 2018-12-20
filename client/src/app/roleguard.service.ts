@@ -14,7 +14,7 @@ export class RoleguardService implements CanActivate {
     if(!token){
       this._router.navigate(['login'])
     }
-    // DECODE THE TOKEN TO GET THE PAYLOAD OAND CHECK TO SEE IF THE ADMIN ROLE IS TRUE || FALSE
+    // decodes the token to get the payload and check if the loggeIn user is an ADMIN.This is used as an authentication check and role guard. 
     const tokenPayload = decode(token);
     if (!token || tokenPayload.isAdmin == false) {
       this._router.navigate(['login']);

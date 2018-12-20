@@ -16,7 +16,7 @@ exports.create = (req, res) =>{
         description: req.body.description,
         cost: req.body.costs,
         creator: id
-    }).then(newTask=>{
+    }).then((newTask)=>{
         res.json(newTask)
     }).catch(err=>{
         res.status(501).send({ success: false, msg: 'Tasks could not entered into DB' })
@@ -34,7 +34,7 @@ exports.findAll = (req,res)=>{
 }
 
 exports.delete = (req, res)=>{
-    // only the creator or the admin should be the one who is able to delete the task.
+    // [ToDo:]only the creator or the admin should be the one who is able to delete the task. This check still needs to be placed in for security.
     var id = req.params.taskId
     Tasks.remove({_id: req.params.taskId}).then(()=>{
         res.status(200).send({success: true, msg:`tasks ${id} was successfully deleted`})
@@ -43,16 +43,6 @@ exports.delete = (req, res)=>{
     })
 }
 
-// exports.addProvider = (req, res)=>{
-//     var id = {_id: req.params.taskId}
-//     var token =  getToken(req.headers)
-//     var dtoken = decoded(token)
-//     var providerId = dtoken._id
-//     Tasks.findByIdAndUpdate(id, {$push: {Providers: providerId}}, { new: true }).then(user=>{
-//         res.json(user)
-//     })
-// }
-
 exports.addProvider =(req, res)=>{
     var id = {_id: req.params.taskId}
     var token =  getToken(req.headers)
@@ -60,8 +50,6 @@ exports.addProvider =(req, res)=>{
     var pId= dtoken._id
     var providerId = {_id:dtoken._id}
     var taskId = req.params.taskId
-    console.log('taskId', taskId)
-    console.log('providerId', providerId)
 
     async.waterfall([
         function(done){
@@ -83,8 +71,8 @@ exports.addProvider =(req, res)=>{
 exports.accepted = (req, res) => {
     var id = {_id: req.params.taskId}
 	Tasks.findByIdAndUpdate(id, {isActive:false},{new:true}) 
-	.then((updatedTasks) => {
-		res.json(updatedTasks)
+	.then(() => {
+		res.status(200)
 	}).catch((err)=>{
         res.status(501).send({ success: false, msg:'error updating tasks'})
     })
@@ -93,8 +81,8 @@ exports.accepted = (req, res) => {
 exports.reactivate = (req, res) => {
     var id = {_id: req.params.taskId}
 	Tasks.findByIdAndUpdate(id, {isActive:true},{new:true}) 
-	.then((updatedTasks) => {
-		res.json(updatedTasks)
+	.then(() => {
+		res.status(200)
 	}).catch((err)=>{
         res.status(501).send({ success: false, msg:'error updating tasks'})
     })

@@ -2,7 +2,8 @@ var express = require('express')
 var router = express.Router()
 var Tasks = require('../controllers/tasks.controller')
 var Users = require('../controllers/user.controller')
-// import controllers on to routes
+
+//API server routes that are connected to the controllers
 
 router.post('/api/newtasks', Tasks.create)
 router.get('/api/tasks/all', Tasks.findAll)

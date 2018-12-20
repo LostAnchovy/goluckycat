@@ -44,8 +44,6 @@ export class RegistrationComponent implements OnInit {
     } 
     return this._http.post('/api/newuser', this.user).subscribe(res=>{
       this.result= res
-      console.log(this.result.user)
-      console.log(this.result.user.category)
         localStorage.setItem('token', this.result.token),
         localStorage.setItem('user', this.result.user.first_name)
         localStorage.setItem('id', this.result.user._id)

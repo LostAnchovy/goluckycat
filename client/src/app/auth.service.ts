@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate} from '@angular/router'
-import { Observable } from 'rxjs';
 import * as decode from 'jwt-decode';
 
 @Injectable({
@@ -53,6 +52,7 @@ export class AuthService implements CanActivate {
 
   }
 
+  //checks if the current user signed in is an provider or a user. This is used in the listings component to display interested button. Interested Button only shows for providers
   public provider(): boolean{
     var token = localStorage.getItem('token')
     if(!token){

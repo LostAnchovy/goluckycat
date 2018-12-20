@@ -63,6 +63,8 @@ import { BarchartComponent} from './barchart/barchart.component'
     MaterialModule,
     NgxPaginationModule
   ],
+  // HTTP interceptors are used to push the JWT token into the header. When http request are made to the server the headers are checked for the token. Invalid tokens and unautenticated users blocked from authorized API routes. 
+
   providers: [DataService, RoleguardService,{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })

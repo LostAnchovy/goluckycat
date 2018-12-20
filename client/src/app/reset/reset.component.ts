@@ -20,19 +20,20 @@ user ={
 };
 message = '';
   constructor(private _router: Router, private _http: HttpClient, private activatedRoute: ActivatedRoute) {
-    // this.route.params.subscribe( params => console.log(params) );
+    // user clicks on the link to their email the token becomes the params. Sets the params.token as the token variable.
     this.activatedRoute.params.subscribe((params) => {
       this.token = params.token;});
    }
 
   ngOnInit() {
+    // on init the component makes an api call to the server. The route checks the token for authenication and if it has expired and sends back and error message and disables the submit button. 
     this._http.get(`/user/${this.token}`, this.token).subscribe(res=>{
       this.token = res
     }, err =>{
       this.message = err.error.msg;
     })
   }
-
+  // still needs to confirm that password === cpassword and display error message if it is not equal, else proceed with form submission. 
   resetpw(){
     this._http.post(`/reset/${this.token}`, this.user).subscribe(res=>{
       this.updatedUser = res
