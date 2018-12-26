@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
 export interface UserInterface {
     _id: string;
     cost: number;
-    location: string;
+    name: string;
     phone: string,
     Admin: string,
   }
@@ -20,7 +20,7 @@ export interface UserInterface {
 })
 export class UserslistComponent implements OnInit {
 
-  displayedColumns: string[] = ['_id', 'location','phone', 'cost', 'Admin'];
+  displayedColumns: string[] = ['_id', 'name','email', 'phone', 'Admin'];
   dataSource: any 
  
 
@@ -45,7 +45,7 @@ export class UserslistComponent implements OnInit {
     this._dataService.users.subscribe(result=>{
       this.dataSource = new MatTableDataSource(result)
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort
+      this.dataSource.sort = this.sort;
     })
   }
 
