@@ -25,6 +25,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private _http:HttpClient, private _router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    // Form controls used to for validations
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -36,6 +37,7 @@ export class RegistrationComponent implements OnInit {
   }
   get f() { return this.userForm.controls; }
 
+  // function that adds new user to the database
   newUser(){
     this.submitted = true
 

@@ -21,6 +21,7 @@
       <label>location</label>
       <input type="text" formControlName="location" class="form-control" name="location" [(ngModel)]="task.location"
         [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+        <small class="text-danger">Please provide address of grocery store here</small>
       <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
         <div *ngIf="f.location.errors.required">Location is required</div>
       </div>

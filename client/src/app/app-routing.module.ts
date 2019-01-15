@@ -17,6 +17,8 @@ import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
 import { BarchartComponent} from './barchart/barchart.component'
+import { EditbioComponent } from './editbio/editbio.component';
+
 
 
 const routes: Routes = [
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'reset/:token', component: ResetComponent},
   { path: 'newtask', component: NewtaskComponent},
+  { path: 'editbio/:userId', component: EditbioComponent},
   { path: 'edittask/:taskId', component: EdittaskComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },
