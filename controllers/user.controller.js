@@ -24,6 +24,13 @@ exports.create = (req, res) => {
     })
 }
 
+exports.findProviders = (req, res) =>{
+    user.find({category:'provider'}).then((provider)=>{
+        res.json(provider)
+    }).catch(err => {
+        res.status(404).send({ error: 'could not providers' })
+    })
+}
 
 exports.findOne = (req, res) => {
     //possibly put some verifications; Admin is able to review all userData, User is able to only view UserData. Limit what is being sent back?

@@ -15,11 +15,12 @@ router.get('/api/task/:creatorId', Tasks.findTasks)
 router.get('/api/onetask/:taskId', Tasks.findOneTask)
 router.post('/api/task/:taskId', Tasks.addProvider)
 
-router.post('/api/newuser', Users.create)
-router.get('/api/users/all', Users.findAll)
+router.post('/api/newuser', Users.create);
+router.get('/api/users/all', Users.findAll);
 router.delete('/api/user/:userId', Users.delete);
-router.get('/api/user/:id', Users.findOne)
-router.put('/api/user/:userId', Users.update)
+router.get('/api/user/:id', Users.findOne);
+router.put('/api/user/:userId', Users.update);
+router.get('/api/providers/all', Users.findProviders)
 
 router.post('/signin', Users.signin)
 router.post('/resetpassword', Users.reset)

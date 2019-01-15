@@ -1,0 +1,18 @@
+<div>
+  <h1 class="text-center mt-2">All Providers</h1>
+  <div class="row p-5 text-center">
+    <div class="col-lg-4" *ngFor="let provider of providers">
+      <div class="card mb-5">
+        <div class="card-img">
+          <img src="../../assets/images/customer2.jpg" class="img-fluid rounded-circle">
+        </div>
+        <div class="card-body">
+          <div class="card-text">
+            <p>name: {{provider.first_name}} {{provider.last_name}}</p>
+            <p>Biography: {{provider.bio}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

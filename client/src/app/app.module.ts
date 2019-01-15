@@ -29,7 +29,9 @@ import { EdittaskComponent } from './edittask/edittask.component';
 import { SortPipe } from './sort.pipe';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
 import { BarchartComponent} from './barchart/barchart.component';
-import { EditbioComponent } from './editbio/editbio.component'
+import { EditbioComponent } from './editbio/editbio.component';
+import { FaqComponent } from './faq/faq.component';
+import { ProvidersComponent } from './providers/providers.component'
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { EditbioComponent } from './editbio/editbio.component'
     SortPipe,
     ProviderProfileComponent,
     BarchartComponent,
-    EditbioComponent
+    EditbioComponent,
+    FaqComponent,
+    ProvidersComponent
   ],
   imports: [
     BrowserModule,

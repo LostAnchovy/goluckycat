@@ -18,12 +18,16 @@ import { EdittaskComponent } from './edittask/edittask.component';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
 import { BarchartComponent} from './barchart/barchart.component'
 import { EditbioComponent } from './editbio/editbio.component';
+import { FaqComponent} from  './faq/faq.component'
+import { ProvidersComponent} from  './providers/providers.component'
 
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'providers', component: ProvidersComponent },
+  { path: 'faq', component: FaqComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[RoleGuard] },
   { path: 'profile/:userId', component: UserComponent, canActivate:[AuthGuard]},
   { path: 'provider/:providerId', component: ProviderProfileComponent},
