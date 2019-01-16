@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
 })
 export class RegistrationComponent implements OnInit {
   userForm: FormGroup;
-  submitted = false;
+  submitted: Boolean = false;
   user ={
     first_name: '',
     last_name: '',

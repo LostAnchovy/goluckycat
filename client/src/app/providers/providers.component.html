@@ -11,6 +11,7 @@
             <p>name: {{provider.first_name}} {{provider.last_name}}</p>
             <p>Biography: {{provider.bio}}</p>
           </div>
+          <button class="btn btn-outline-warning" *ngIf="_auth.user()">Review Provider</button>
         </div>
       </div>
     </div>

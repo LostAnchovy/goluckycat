@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-providers',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProvidersComponent implements OnInit {
 
   providers: any =[]
-  constructor(private _http:HttpClient) { }
+  constructor(private _http:HttpClient, private _auth: AuthService) { }
 
   ngOnInit() {
     this._http.get('/api/providers/all').subscribe(result=>{
