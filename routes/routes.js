@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var Tasks = require('../controllers/tasks.controller')
 var Users = require('../controllers/user.controller')
+var Reviews = require('../controllers/reviews.controller')
 
 //API server routes that are connected to the controllers
 
@@ -14,6 +15,8 @@ router.put('/api/reactivate/:taskId', Tasks.reactivate)
 router.get('/api/task/:creatorId', Tasks.findTasks)
 router.get('/api/onetask/:taskId', Tasks.findOneTask)
 router.post('/api/task/:taskId', Tasks.addProvider)
+
+router.post('/api/reviews', Reviews.create)
 
 router.post('/api/newuser', Users.create);
 router.get('/api/users/all', Users.findAll);

@@ -23,6 +23,7 @@
                     <a class="nav-link" [routerLink]="['login']">Login</a>
                 </li> 
             </ul>
+            
             <ul class="nav navbar-nav navbar-right text-center ml-auto" *ngIf="_auth.loggedIn()">
                 <li class="nav-item " data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="_auth.admin()" >
                     <a class="nav-link" [routerLink]="['dashboard']">Welcome Admin</a>
