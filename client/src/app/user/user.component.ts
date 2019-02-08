@@ -21,7 +21,6 @@ private tasks:any = []
 
     this._http.get(`/api/task/${this.id}`).subscribe(res=>{
       this.tasks = res 
-      console.log(res)
     })
   }
 
