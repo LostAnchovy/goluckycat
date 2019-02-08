@@ -51,4 +51,5 @@ GoLuckyCat is a services exchange plaform built on the MEAN (MongoDb, Express, A
 
 ## Known_Bugs:
 * When user or admin logs in it, depending on role, it sould be routed to a profile. Sometimes pressing on the profile (in navbar) link does not work. When reloaded the link works. Possibly a component life cycle issue.
+* Bug issues are commented in code under and labeled BUG
 * other bug issues to be updated.
