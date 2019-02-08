@@ -16,7 +16,6 @@ import { ResetComponent} from './reset/reset.component'
 import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
-import { BarchartComponent} from './barchart/barchart.component'
 import { EditbioComponent } from './editbio/editbio.component';
 import { FaqComponent} from  './faq/faq.component'
 import { ProvidersComponent} from  './providers/providers.component'
@@ -38,7 +37,6 @@ const routes: Routes = [
   { path: 'edittask/:taskId', component: EdittaskComponent},
   { path: 'listings', component: ListingsComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'barchart', component: BarchartComponent },
   { path: '**', component: NotfoundComponent}
 
 ];

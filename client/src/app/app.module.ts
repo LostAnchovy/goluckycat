@@ -28,7 +28,6 @@ import { NewtaskComponent } from './newtask/newtask.component';
 import { EdittaskComponent } from './edittask/edittask.component';
 import { SortPipe } from './sort.pipe';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
-import { BarchartComponent} from './barchart/barchart.component';
 import { EditbioComponent } from './editbio/editbio.component';
 import { FaqComponent } from './faq/faq.component';
 import { ProvidersComponent } from './providers/providers.component'
@@ -55,7 +54,6 @@ import { ProvidersComponent } from './providers/providers.component'
     EdittaskComponent,
     SortPipe,
     ProviderProfileComponent,
-    BarchartComponent,
     EditbioComponent,
     FaqComponent,
     ProvidersComponent
