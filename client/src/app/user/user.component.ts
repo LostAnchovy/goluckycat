@@ -24,39 +24,33 @@ private tasks:any = []
     })
   }
 
+
   removeTask(id){
-    // this._dataService.removeTask(id)
-    this._http.delete('/api/task/' + id).subscribe(res=>{
-      console.log(res)
-    })
+    this._dataService.removeTask(id)
+    // this._http.delete('/api/task/' + id).subscribe(res=>{
+    //   console.log(res)
+    // })
     this.ngOnInit()
   }
 
   isActive(id) {
     this._http.put('/api/accept/'+ id, this.id)
       .subscribe(res => {
-        console.log(res)
-        this.ngOnInit()
         }, (err) => {
           console.error(err);
         }
       );
+        this.ngOnInit()
   }
 
   isreactivate(id) {
     this._http.put('/api/reactivate/'+ id, this.id)
       .subscribe(res => {
-        console.log(res)
-        this.ngOnInit()
         }, (err) => {
           console.error(err);
         }
       );
+      this.ngOnInit()
   }
   
-  applyFilter(filterValue: any) {
-    this.tasks.filter = filterValue.trim().toLowerCase();
-  }
-
-
 }

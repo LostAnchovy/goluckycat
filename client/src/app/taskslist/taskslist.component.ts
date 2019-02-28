@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient } from '@angular/common/http';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
 import {BehaviorSubject, Observable} from 'rxjs';
-import { DataService } from '../data.service';
+import {DataService } from '../data.service';
 
 export interface UserInterface {
     title: String, 

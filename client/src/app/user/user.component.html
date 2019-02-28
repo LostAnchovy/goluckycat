@@ -9,10 +9,10 @@
 
   <section>
     <!-- [Bug]: I thought i fixed the bug--I did not. When user clicks on "Accept" the isActive boolean is toogled to false in DB. Letting client and provider communicate on a different space. The <div>Task in Progress and has been removed from listings</div> appears and the table is removed. By clicking on refresh does it work. Component rendering issues. Please fix.-->
-    <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="row m-2">
       <div class="col-md-12 mb-3" *ngFor="let task of tasks | sort: '-createdAt'  | paginate: { itemsPerPage: 3, currentPage: p}">
         <div class="card">
-          <div class="card-header">あなたの日本語を必要としている人がいま</div>
+          <!-- <div class="card-header">あなたの日本語を必要としている人がいま</div> -->
           <div>
               <h2 class="text-center text-danger"*ngIf ="task.isActive !== true">Task in Progress and has been removed from listings</h2>
             </div>
