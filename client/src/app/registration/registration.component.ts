@@ -40,7 +40,6 @@ export class RegistrationComponent implements OnInit {
   // function that adds new user to the database
   newUser(){
     this.submitted = true
-
     if (this.userForm.invalid) {
       return;
     } 

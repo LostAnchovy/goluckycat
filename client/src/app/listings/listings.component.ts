@@ -26,7 +26,6 @@ export class ListingsComponent implements OnInit {
   ngOnInit() {
     this._http.get('/api/tasks/all').subscribe(res=>{
       this.tasks = res 
-      console.log(res)
     })
   }
 
@@ -42,7 +41,7 @@ export class ListingsComponent implements OnInit {
     this._http.post(`/api/task/${id}`, this.taskId).subscribe(res=>{
       console.log(res)
     })
-    
+    alert('task was successfully added')
 }
 
   
