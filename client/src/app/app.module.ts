@@ -30,7 +30,8 @@ import { SortPipe } from './sort.pipe';
 import { ProviderProfileComponent } from './provider-profile/provider-profile.component';
 import { EditbioComponent } from './editbio/editbio.component';
 import { FaqComponent } from './faq/faq.component';
-import { ProvidersComponent } from './providers/providers.component'
+import { ProvidersComponent } from './providers/providers.component';
+import { ReviewComponent } from './review/review.component'
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ProvidersComponent } from './providers/providers.component'
     ProviderProfileComponent,
     EditbioComponent,
     FaqComponent,
-    ProvidersComponent
+    ProvidersComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

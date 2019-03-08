@@ -16,7 +16,7 @@ router.get('/api/task/:creatorId', Tasks.findTasks)
 router.get('/api/onetask/:taskId', Tasks.findOneTask)
 router.post('/api/task/:taskId', Tasks.addProvider)
 
-router.post('/api/reviews', Reviews.create)
+router.post('/api/newreviews', Reviews.create)
 router.get('/api/reviews/all', Reviews.findAll)
 router.delete('/api/reviews/:reviewId', Reviews.delete)
 

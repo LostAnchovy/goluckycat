@@ -19,6 +19,7 @@ import { ProviderProfileComponent } from './provider-profile/provider-profile.co
 import { EditbioComponent } from './editbio/editbio.component';
 import { FaqComponent} from  './faq/faq.component'
 import { ProvidersComponent} from  './providers/providers.component'
+import { ReviewComponent} from './review/review.component'
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate:[RoleGuard] },
   { path: 'profile/:userId', component: UserComponent, canActivate:[AuthGuard]},
   { path: 'provider/:providerId', component: ProviderProfileComponent},
+  { path: 'review/:providerId', component: ReviewComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'reset/:token', component: ResetComponent},
   { path: 'newtask', component: NewtaskComponent},

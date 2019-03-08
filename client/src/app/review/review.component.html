@@ -1,0 +1,47 @@
+<div class="container z-depth-1">
+  <div class="text-center">
+    <img src="../../assets/images/logo.png">
+    <h1>Submit Review</h1>
+    <small>please submit your review</small>
+  </div>
+  <form [formGroup]="reviewForm"  (ngSubmit)="newReview()">
+    <div class="alert alert-danger m-2 text-center" *ngIf="message == ''">
+        <span>{{message}}</span>
+    </div>
+   
+    <div class="form-group">
+      <label>Date Task Completed</label>
+      <input type ="date" formControlName="date" class="form-control" name ="date" [(ngModel)]="review.date" [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+      <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+          <div *ngIf="f.date.errors.required">date required</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Select One</label>
+        <select class="form-control" formControlName="rate" type ='text' name ="rate" placeholder ="select one"  [(ngModel)]="review.rate" [ngClass]="{ 'is-invalid': submitted && f.rate.errors }" >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <div *ngIf="submitted && f.rate.errors" class="invalid-feedback">
+          <div *ngIf="f.rate.errors.required">rating is required</div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label>Write Review</label>
+      <textarea type="text" formControlName="review" class="form-control" rows="7" name="review" [(ngModel)]="review.review" [ngClass]="{ 'is-invalid': submitted && f.review.errors }"></textarea>
+      <div *ngIf="submitted && f.review.errors" class="invalid-feedback">
+        <div *ngIf="f.review.errors.required">Description is required</div>
+        <div *ngIf="f.review.errors.minlength">Password must be at least 10 characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn-block" type ="submit"  value ="ok">Submit Review</button>
+    </div>
+  </form>
+</div>

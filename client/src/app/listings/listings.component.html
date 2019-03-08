@@ -15,7 +15,7 @@
 <section>
   <div class="row m-2" cdkDropList (cdkDropListDropped)="drop($event)">
       <div class="col-md-12 mb-3" *ngFor="let task of tasks | sort: '-createdAt' | paginate: { itemsPerPage: 5, currentPage: p}">
-        <div class="card bg-light" *ngIf="task.isActive == true" cdkDrag>
+        <div class="card bg-light mat-elevation-z4 " *ngIf="task.isActive == true" cdkDrag>
           <div class="card-header text-center">{{task.title}}</div>
             <div class="card-body">
               <!-- <div> <h2 class="text-danger text-center">This Task has been added to your Interested jobs</h2></div> -->
@@ -28,7 +28,7 @@
                 <p>{{task.description}}</p>
                 <div class="d-inline p-2">
                   <span class="font-weight-bold">cost ${{task.cost}}</span>
-                  <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.provider()" (click)="addTask(task._id)" [disabled]=" ">Interested</button>
+                  <button mat-raised-button color="primary" class="float-right" *ngIf="_auth.provider()" (click)="addTask(task._id)">Interested</button>
                 </div>
             </div>
           </div>
@@ -37,9 +37,6 @@
   </div>
   <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 </section>
-<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
-</div> -->
 <app-footer></app-footer>
 </div>
 <!-- End of Listings -->

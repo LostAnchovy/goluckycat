@@ -43,7 +43,8 @@ const userSchema = mongoose.Schema({
         type: String,
         default: null
     },
-    tasks: [{ type: Schema.Types.ObjectId, ref: 'Tasks' }]
+    tasks: [{ type: Schema.Types.ObjectId, ref: 'Tasks' }],
+    reviews:[{type: Schema.Types.ObjectId, ref: 'Reviews'}]
 },{timestamps: true });
 
 var User = mongoose.model('User', userSchema)

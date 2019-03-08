@@ -10,6 +10,7 @@ const reviewsSchema = mongoose.Schema({
     review:{
         type: String,
     },
+    Provider: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },{timestamps: true });
 var Reviews = mongoose.model('Reviews', reviewsSchema)
 module.exports = Reviews;

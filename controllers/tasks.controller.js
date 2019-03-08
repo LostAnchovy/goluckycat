@@ -51,21 +51,33 @@ exports.addProvider =(req, res)=>{
     var providerId = {_id:dtoken._id}
     var taskId = req.params.taskId
 
-    async.waterfall([
-        function(done){
-            Tasks.findByIdAndUpdate(id, {$push: {Providers: pId}}, { new: true }, (err, task)=>{
-                if (err) throw err
-                done(err, task)
-            }).then(()=>{
-                res.status(200).send({success: true, msg:'successfully added tasks'})
-            })
-        },
-        function(done){
-            User.findByIdAndUpdate(providerId, {$push:{tasks: taskId}}, {new:true}).then(()=>{
-            done(err, 'done') 
-            })
+    Tasks.findByIdAndUpdate(id, {$push:{Providers: pId}}).then(()=>{
+        res.status(200).send({success:true, msg:'successully added task'})
+    }).catch(err=>{
+        if(err){
+            res.status(501).send({success:false, msg:'task not added'})
         }
-    ])
+    }).then(()=>{
+        User.findByIdAndUpdate(providerId,{$push:{tasks:taskId}}).then(()=>{
+            console.log()
+        })
+    })
+
+    // async.waterfall([
+    //     function(done){
+    //         Tasks.findByIdAndUpdate(id, {$push: {Providers: pId}}, { new: true }, (err, task)=>{
+    //             if (err) throw err
+    //             done(err, task)
+    //         }).then(()=>{
+    //             res.status(200).send({success: true, msg:'successfully added tasks'})
+    //         })
+    //     },
+    //     function(done){
+    //         User.findByIdAndUpdate(providerId, {$push:{tasks: taskId}}, {new:true}).then(()=>{
+    //         done(err, 'done') 
+    //         })
+    //     }
+    // ])
 }
 
 exports.accepted = (req, res) => {

@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
 private user:any
 private id: String = ''
 private p: number = 1;
-private tasks:any = []
+tasks: any =[]
 
   constructor(private _http: HttpClient, private _dataService: DataService) { }
   

@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./providers.component.css']
 })
 export class ProvidersComponent implements OnInit {
-
+  p: number = 1;
   providers: any =[]
   constructor(private _http:HttpClient, private _auth: AuthService) { }
 
